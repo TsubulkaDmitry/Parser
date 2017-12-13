@@ -1,0 +1,165 @@
+<?php
+
+/**
+ * @return mixed
+ * Implements hook_schema()
+ */
+
+function main_parser_schema (){
+
+  #Database schema
+  $schema['students'] = array(
+      'description' => 'Table for students',
+      'fields' => array(
+        'id' => array(
+          'description' => 'ID',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+
+        ),
+        'surname' => array(
+          'description' => 'Surname student',
+          'type' => 'varchar',
+          'length' => '90',
+          'default' => '',
+
+        ),
+        'name' => array(
+          'description'=> 'Name student',
+          'type' => 'varchar',
+          'length' => '90',
+          'default' => '',
+
+        ),
+        'middle_name' => array(
+          'description'=> 'Middle name student',
+          'type' => 'varchar',
+          'length' => '90',
+          'default' => '',
+
+        ),
+        'status' => array(
+          'description'=> 'Status student',
+          'type' => 'varchar',
+          'length' => '50',
+          'default' => '',
+
+        ),
+        'course' => array(
+          'description'=> 'Course student',
+          'type' => 'varchar',
+          'length' => '10',
+          'default' => '',
+
+        ),
+        'groups' => array(
+          'description' => 'Group number',
+          'type' => 'numeric',
+          'length' => '20',
+          'unsigned' => TRUE,
+          'default' => 0,
+
+        ),
+      ),
+      'primary key' => array('id'),
+  );
+
+  $schema['groups'] = array(
+    'description' => 'Table for groups',
+    'fields' => array(
+      'id' => array(
+        'description' => 'ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+
+      ),
+      'course' => array(
+        'description'=> 'Course student',
+        'type' => 'varchar',
+        'length' => '10',
+        'default' => '',
+
+      ),
+      'groups' => array(
+        'description' => 'Group number',
+        'type' => 'numeric',
+        'length' => '20',
+        'unsigned' => TRUE,
+        'default' => 0,
+
+      ),
+      'subject' => array(
+        'description'=> 'subject',
+        'type' => 'text',
+      ),
+
+    ),
+    'primary key' => array('id'),
+  );
+
+  $schema['specialty'] = array(
+    'description' => 'Table of specialties and groups',
+    'fields' => array(
+      'id' => array(
+        'description' => 'ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+
+      ),
+      'abbreviation' => array(
+        'description'=> 'Abbreviation specialty',
+        'type' => 'varchar',
+        'length' => '15',
+        'default' => '',
+
+      ),
+      'full_name' => array(
+        'description'=> 'full name of the specialty',
+        'type' => 'text',
+      ),
+      'additional' => array(
+        'description'=> 'Additional Information',
+        'type' => 'varchar',
+        'length' => '15',
+        'default' => '',
+
+      ),
+      'training_form' => array(
+        'description'=> 'Form of training',
+        'type' => 'varchar',
+        'length' => '15',
+        'default' => '',
+
+      ),
+      'course' => array(
+        'description'=> 'Course student',
+        'type' => 'varchar',
+        'length' => '10',
+        'default' => '',
+
+      ),
+      'groups' => array(
+        'description' => 'Group number',
+        'type' => 'numeric',
+        'length' => '20',
+        'unsigned' => TRUE,
+        'default' => 0,
+
+      ),
+
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+function database_ex_uninstall() {
+  # Remove table
+  \Drupal::state()->delete('main_parser.students');
+  \Drupal::state()->delete('main_parser.groups');
+  \Drupal::state()->delete('main_parser.specialty');
+}
+

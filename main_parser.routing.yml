@@ -1,0 +1,7 @@
+main_parser.routing:
+  path: '/main_parser'
+  defaults:
+    _title: 'Parser'
+    _controller: '\Drupal\main_parser\Controller\MainParserController::Run'
+  requirements:
+    _permission: 'access content'

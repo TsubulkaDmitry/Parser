@@ -1,0 +1,6 @@
+main_parser.link:
+  title: 'Parser'
+  description: 'Example Link'
+  menu_name: main
+  route_name: main_parser.routing
+  weight: 100

@@ -1,0 +1,4 @@
+name: 'Main Parser'
+description: 'Test Module for parsing date'
+core: 8.x
+type: module
